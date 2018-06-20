@@ -125,10 +125,13 @@ console.log();
 // Lexical Scope (Static Scope), every inner level can access its outer levels
 // Scopes unaffected by Ifs and Fors, only for functions 
 
-//Let 
+// Let 
 // let can be used in place of var to simulate block scoping in Javascript
 // Applies block scope, scope is defined by any code block (not only functions but also if statements and for loops) 
 if (true){let num = 12;} // only access num within {} 
+
+// Const
+const variableName; // Const cannot be reassigned
 
 
 // Length 
