@@ -1,103 +1,140 @@
-CSS Specificity
-element
-class, psuedo-class, attribute 
-id 
-Inline Stlying (attribute on HTML)
 
+/* CSS Specificity  */
 p {color: purple;}
 div p {color pink;}
 #red-text { color: red;}
-Order: all paragraphs are purple, all div p is pink, id with red-text is red (even though all these texts coud be within <p> </p>)
+/* Order: all paragraphs are purple, all div p is pink, id with red-text is red (even though all these texts coud be within <p> </p>) */
 
-DRY (Don't repeat yourself)
-If two posts have same CSS styling, can put them under same class instead of  copy and pasting two separate divisions
-First use all generic terms, then see how things can be grouped if needed
+/* DRY (Don't repeat yourself) */
+/* If two posts have same CSS styling, can put them under same class instead of copy and pasting two separate divisions
+First use all generic terms, then see how things can be grouped if needed */
 
-reset.css 
-normalize.css 
-Help get better, more consistent styling that browers usually change 
+ 
+/* Setup reset.css file */
 
-div { display: block;} 
-This is default display 
-div {display: line;}
-Take divs in row (span)
-div {display: inline-block;}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-h1 {
-    color: black; can also do rgb (100,51,197;) [red,green,blue]
-    float: right; 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Help get better, more consistent styling that browers usually change  */
+
+button {
+    cursor: pointer;
+}
+
+div { 
+    background-color: black;
+    background-image: url('http://pics.com/puppy');
+    background-position: top center;
+    background-size: cover; (contain);
+    background-repeat: no-repeat;
+
+    border: 1px blue dotted; 
+
+    box-sizing: border-box; 
+    /* border-box: Force element to respect width and height, regardless of border and padding */
+    
+
+    color: black; 
+
+    display: block; /* [block, in-line block, in-line] */
+
     font-size: 3rem; (px, em, vh, rem)
     font-family: 'Helvetcia', sans-serif;
+
+    float: right; /* [left] */
+
+    height: 200px; /* [px,vh,%,em] */ 
+    width: 200px; /* [px,vw,%,em] */ 
+    /* 
+    px === pixels, gives height and width based on pixels
+    (vh, vw) === (view height, view width) which changes height/width to certain percent of browser screen 
+    % changes height and width to 50% of parent element 
+    em sets height and width based on how wide the letter m is in the default browser
+    */
+
+    text-alignment: right; (center,left)
+    text-decoration: none;
+
+    visibility: hidden; 
+} 
+
+
+h1 {
+    margin: 10px, 20px, 25px, 30px (left, top, right, bottom)
+    margin: 10px, 2px; (top and bottom, left and right) /* margin pushes outward */
+    border: 1px blue dotted; 
+    padding: 2px; /* padding pushes inward */
+    min-width: 400px 
+    max-width: 1000px
     line-height: 2em;
     list-style-type: none;  
     letter-spacing: .25rem; 
     overflow: hidden; 
-    text-alignment: right; (center,left)
-    text-decoration: none;
-}
-
-div {
-    background-image: url('http://pics.com/puppy');
-    background-size: cover; (contain)
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-color: black;
-}
-
-div {
-    height: 200px; 
-    width: 200px; 
-    blackground:blue; 
-}
-div {
-    height: 10vh;
-    width: 50vw; 
-}
-Change overall height to be 10% of browser screen 
-Change overall width to be 50% of browser screen 
-vh, vw == view height, view width 
-
-div {
-    height: 50%; 
-    width: 50%;
-}
-Change height and width to 50% of parent element 
-
-em/rem (how wide is the letter m in the default browser)
-div {
-    height: 1em; 
-    width: 2em; 
-}
-Keep height same as default font size
-Change width to 2x the width of default 
-
-.no-bubble{
-    margin: 10px, 2px; (top and bottom, left and right)
-    border: 1px blue dotted; 
-    padding: 2px; 
-    min-width: 400px 
-    max-width: 1000px 
+    display: none;
 
 }
-with border, margin, padding can specify which side to adjust 
-margin pushes outward
-padding pushes inward
 
-.pgraph {} For classes 
-#password {} For id 
-input, p {} For multiple elements
-div p {} For nested elements, doesnt matter how nested
-div > p {} Has to be direct child of parent 
-li:nth-child{} pusedo selector (li tag that pass nth child)
-li:nth-child(2n+1){} find every 2 children starting at 1 
-input [type="text"] {} specifically style numbers or certain text 
+.pgraph {} /* For classes */ 
+#password {} /* For id  */
+input, p {} /* For multiple elements */
+div p {} /* For nested elements, doesnt matter how nested */
+div > p {} /* Has to be direct child of parent  */
+li:nth-child{}/*  pusedo selector (li tag that pass nth child */
+li:nth-child(2n+1){} /* find every 2 children starting at 1  */
+input [type="text"] {} /* specifically style numbers or certain text  */
 
 Psuedo Classes 
-button:hover { background: purple;} If mouse hover, change color to purple 
-button:active {background: purple;} if hold down button, change color to purple 
+button:hover { background: purple;} /* If mouse hover, change color to purple */ 
+button:active {background: purple;} /* if hold down button, change color to purple  */
 
-Pseudo-elements
+/* Pseudo-elements
 li::before (similar to bullet points, can add things before content)
 p::first-line (can style first line)
 p::first-letter
-Takes base element and adds an extra element to add things in 
+Takes base element and adds an extra element to add things in  */

@@ -20,6 +20,9 @@ const variableName;
 "String" // Strings
 9 // Numbers
 
+// Escaping 
+'We don\'t do that stuff' // Blacklash on single quotes to not break early
+
 // Reference Types 
 // Also known as pointer, something references to specified item
 [] // Arrays 
@@ -37,6 +40,7 @@ console.log("Hi there");
 + // Addition
 - // Subtraction
 * // Multiplication
+** // Exponential
 / // Division
 !work //Bang Operator (NOT operator), gives inverse of expression
 
@@ -140,11 +144,26 @@ array.length = 3 // Set length of array
 
 //Objects 
 var person = {firstName: "Cory",lastName:"Johnson"}; // var objName = {key:value,key:value};
+// Shape of person is firstName and lastName
 person.firstName // Calling data from object
 person.email = "coryjohnson12@gmail.com" // Adding key:value pairs into object
 person['email'] // Bracket Notation
 person[0]['email'] // Access array in object that has email property
 person[email] // Access variable named email
+
+// Object.assign 
+const newObject = Object.asign({},oldObject)// Object.assign merges any number of 'source' objects into a single 'target' object
+const newObject = Object.asign({},oldObject,{four:4})// Add property four along with adding oldObject
+const newObject = Object.asign({},oldObject1,oldObject2,oldObject3) // Merge all oldobjects into one new object
+
+// Object Destructuring 
+let {one,two,three} = objToDestructure; // Syntax Structure
+function writeStuff({name, favoritePhrase}) {
+    console.log(name); 
+    console.log(favoritePhrase);
+}  
+writeStuff(yessa);
+// Using a function which passes an obj as a parameter
 
 // Methods 
 // A method is a function insie an object
@@ -199,6 +218,7 @@ Array.map();
 var ages2016 = [53,50,29,22,16]; 
 var ages2017 = ages2016.map(function(element){return element + 1;}); // Works like forEach but returns the value
 ages2017; >> [54,51,30,23,17] // Transformed copy of the original 
+arr.map (function(element,index,array){}) // Syntax Structure
 
 Array.filter(); 
 var names  = ['Suzie','Ben','Mark','Franklin']
@@ -206,6 +226,7 @@ var shortNames = names.filter(function(val,i,arr){
     return val.length < 5; 
 }) // .filter determines if piece of array passes condition (trust or false), if true then adds into new empty array called shortNames
 shortNames; >> ['Ben','Mark'] // Original array is unmodified when using filter 
+arr.filter(function(element,index,array){})) // Syntax Structure
 
 function checkAge(array){
     var emptyArray = [];
@@ -231,8 +252,13 @@ flowers; >> ['Morning Glory','Bloodroot','Lavender'] // .unshift adds new items 
 
 Array.reduce();
 var numbers = [1,2,3,4];
-var total = numbers.reduce(function(num1,num2){return num1 + num2;}); // var newArray = array.reduce(function(total,currentValue){action});
+var total = numbers.reduce(function(num1,num2){return num1 + num2;},0); // var newArray = array.reduce(function(total,currentValue){action}, initial value);
 total; >> 10 // .reduce condenses all values in an array into one value
+arr.reduce(function(accumulator, value, index, array){}), 0) // Syntax Structure
+
+Array.sort(); 
+var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
+workplaceAccidents.sort(function(a, b){return a - b}); // Sort numbers in array in order from a to b, least to greatest
 
 // Loops 
 for (i=0;i<array.length;i++){}; // for (initial; condition; increment) {action}; Action will perform until condition is false
@@ -243,6 +269,7 @@ for(let i = array.length - 1; i > 0; i--) {} // Looking through an array backwar
 var xVariable = x => 7; // By default, arrow function will return what after the arrow
 var myFunction = (num1,num2) => {return num1 + num2;}; // var functionName = (paramters) => {action};
 var newArray = array.filter((item)=> item === "John";); // Prototypes such as .filter can use arrow function as well
+// Arrow functions do not change the JavaScript context ('this' keyword)
 
 // Callback functions 
 function getUserInfo (firstName,lastName,callback){
@@ -265,6 +292,6 @@ class Tree { // Create new class with 'class' keyword and name of class is capit
         this.height++;
     }
 }
-var oak = new Tree(10);
+var oak = new Tree(10); // Instance of Tree in variable oak
 oak; >> {height:10,food:'photosynthesis'} Prototype: grow:[function]
 oak.grow(); >> {height:11}
